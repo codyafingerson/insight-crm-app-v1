@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Insight CRM",
@@ -13,8 +14,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
+    <ClerkProvider>
       <html lang="en">
-        <body>{children}</body>
+          <body className="bg-white text-slate-800 dark:bg-slate-800 dark:text-white">{children}</body>
       </html>
+    </ClerkProvider>
   );
 }
