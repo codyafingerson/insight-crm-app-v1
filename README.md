@@ -1,0 +1,1 @@
+# Insight CRM (Customer Relationship Management) application
