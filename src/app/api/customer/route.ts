@@ -24,9 +24,20 @@ export const GET = async (req: NextRequest) => {
     }
 }
 
+/**
+ * Create a new customer
+ * @param req 
+ * @returns 
+ */
 export const POST = async (req: NextRequest) => {
     try {
         await connectDatabase();
+
+        if (req.headers.get('content-type') !== 'application/json') {
+            return new Response(JSON.stringify({ error: 'Invalid content type' }), {
+                status: 400,
+            });
+        }
 
         const body = await req.json();
         const { firstName, lastName, email, phoneNumber, address, companyName, companyAddress, companyPhoneNumber } = body;
@@ -46,7 +57,7 @@ export const POST = async (req: NextRequest) => {
             status: 201,
         });
     } catch (error) {
-        console.error(error);
+        console.error('Error creating customer:', error);
         return new Response(JSON.stringify({ error: 'Failed to create customer' }), {
             status: 500,
         });
