@@ -1,6 +1,9 @@
 import { currentUser } from "@clerk/nextjs/server"
-import { SignOutButton } from "@clerk/nextjs"
 import { UserButton } from "@clerk/nextjs";
+import CustomerList from "@/components/CustomerList";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import NavBar from "@/components/Sidebar/Navbar";
+import DashboardContainer from "@/components/DashboardContainer";
 
 export default async function DashboardPage() {
     const user = await currentUser()
@@ -8,11 +11,11 @@ export default async function DashboardPage() {
 
     return (
         <div>
-            <h1>Dashboard</h1>
-            <UserButton
-                appearance={{ layout: { helpPageUrl: "/help", shimmer: false } }}
-            />
-            <p>Welcome, {user.fullName}!</p>
+            <NavBar />
+            <Sidebar />
+            <DashboardContainer>
+                <CustomerList />
+            </DashboardContainer>
 
         </div>
     )

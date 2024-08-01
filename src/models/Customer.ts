@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface CustomerDocument extends Document {
     status: string;
@@ -30,6 +30,4 @@ const customerSchema: Schema<CustomerDocument> = new Schema<CustomerDocument>({
     timestamps: true
 });
 
-const Customer: Model<CustomerDocument> = mongoose.model<CustomerDocument>("Customer", customerSchema);
-
-export default Customer;
+export default mongoose.models.Customer || mongoose.model("Customer", customerSchema); 

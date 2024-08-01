@@ -6,7 +6,7 @@ export default async function connectDatabase() {
     mongoose.set('strictQuery', true); // Ensure that only schema-defined fields are used in query filters
 
     if (isConnected) {
-        console.log('A database connection is already established.');
+        console.log(' A database connection is already established.');
         return;
     }
 
@@ -16,6 +16,5 @@ export default async function connectDatabase() {
         isConnected = true;
     } catch (error) {
         console.error(`Error connecting to the database: ${error}`);
-        process.exit(1);
     }
 }
