@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import UserMenu from './UserMenu';
-import logo from "@/assets/logo.svg"
 
 export default function NavBar () {
     return (
@@ -33,9 +32,9 @@ export default function NavBar () {
                             </svg>
                         </button>
                         <div className="flex ms-2 md:me-24">
-                            <Image src={logo} alt="Insight CRM Logo" width={32} height={32} className="h-8 me-3" />
-                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                                Insight CRM
+                            <Image src='/images/logo.svg' alt="Insight CRM Logo" width={32} height={32} className="h-8 me-3" />
+                            <span className="self-center text-lg sm:text-2xl whitespace-nowrap dark:text-white">
+                                Insight ERP
                             </span>
                         </div>
                     </div>

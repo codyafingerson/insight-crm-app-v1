@@ -1,20 +1,18 @@
-# Insight CRM (Customer Relationship Management) application
-
-<img src="./public/images/favicon.svg" alt="Logo" width="100" height="100">
+# Insight ERP
 
 *This project (and document) is a work in progress and is subject to change at anytime without notice*
 
 # About this project
-This project is written using [Next.js](https://nextjs.org/) and [Clerk](https://clerk.com/) for authentication and user state management. In order to use the application, you must create your own clerk account and add a user in the dashboard BEFORE being able to login to the actual CRM application.
+This project is written using [Next.js](https://nextjs.org/) and [Clerk](https://clerk.com/) for authentication and user state management. In order to use the application, you must create your own clerk account and add a user in the dashboard BEFORE being able to login to the actual ERP application.
 
 # Installation
 1. Clone this repository:
 ```sh
-git clone https://github.com/codyafingerson/insight-crm-app
+git clone https://github.com/codyafingerson/insight-erp
 ```
 2. Navigate to the project directory
 ```sh
-cd insight-crm-app
+cd insight-erp
 ```
 3. Install Next.js and other dependencies
 ```sh
@@ -33,7 +31,7 @@ npm run dev
 ```
 
 # Reporting Issues
-If you find any bugs or have feature requests, please open an issue in the [Issues](https://github.com/codyafingerson/insight-crm-app/issues) section.
+If you find any bugs or have feature requests, please open an issue in the [Issues](https://github.com/codyafingerson/insight-erp/issues) section.
 
 # Contributing
 Contributions are extremely welcome to this repository. Please treat everyone with respect.
@@ -42,7 +40,7 @@ Contributions are extremely welcome to this repository. Please treat everyone wi
 1. **Fork the repository**: Click the "Fork" button at the top right corner of this repository to create a copy of the repository in your GitHub account.
 2. **Clone your fork**: Clone the forked repository to your local machine.
     ```sh
-    git clone https://github.com/your-username/insight-crm-app.git
+    git clone https://github.com/your-username/insight-erp.git
     ```
 3. Create a new branch: Create a new branch for your feature or bug fix.
     ```sh

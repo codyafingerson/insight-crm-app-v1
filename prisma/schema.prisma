@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id                Int       @id @default(autoincrement())
+  status            Status    @default(active)
+  firstName         String
+  lastName          String
+  email             String    @unique
+  phoneNumber       String
+  address           String
+  companyName       String?
+  companyAddress    String?
+  companyPhoneNumber String?
+  orders            Order[]
+  notes             Note[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  orderData String   // Adjust this field to fit your order data
+  customer  Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  note      String
+  customer  Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+}
+
+enum Status {
+  active
+  inactive
+}

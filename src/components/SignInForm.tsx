@@ -13,7 +13,7 @@ export default function SignInForm() {
                     className="w-full space-y-6 rounded-2xl bg-white px-4 py-10 shadow-md ring-1 ring-black/5 sm:w-96 sm:px-8"
                 >
                     <header className="text-center">
-                        <Image src="images/logo.svg" alt="Insight" priority={true} width={200} height={200} className="mx-auto mb-2"/>
+                        <Image src="/images/logo.png" alt="Insight" priority={true} width={220} height={220} className="mx-auto mb-2"/>
                     </header>
                     <Clerk.GlobalError className="block text-sm text-red-400" />
                     <div className="space-y-4">
