@@ -1,5 +1,4 @@
-import connectDatabase from "@/config/database";
-import Customer from "@/models/Customer";
+import prisma from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
 /**
@@ -9,20 +8,23 @@ import { NextRequest } from "next/server";
  */
 export const GET = async (req: NextRequest) => {
     try {
-        await connectDatabase();
-
-        const customers = await Customer.find().sort({ updatedAt: -1 });
+        // Fetch all customers sorted by updatedAt in descending order
+        const customers = await prisma.customer.findMany({
+            orderBy: {
+                updatedAt: 'desc',
+            },
+        });
 
         return new Response(JSON.stringify(customers), {
             status: 200,
         });
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching customers:', error);
         return new Response(JSON.stringify({ error: 'Failed to fetch customers' }), {
             status: 500,
         });
     }
-}
+};
 
 /**
  * Create a new customer
@@ -31,8 +33,6 @@ export const GET = async (req: NextRequest) => {
  */
 export const POST = async (req: NextRequest) => {
     try {
-        await connectDatabase();
-
         if (req.headers.get('content-type') !== 'application/json') {
             return new Response(JSON.stringify({ error: 'Invalid content type' }), {
                 status: 400,
@@ -42,15 +42,18 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { firstName, lastName, email, phoneNumber, address, companyName, companyAddress, companyPhoneNumber } = body;
 
-        const newCustomer = await Customer.create({
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-            address,
-            companyName,
-            companyAddress,
-            companyPhoneNumber
+        // Create a new customer using Prisma
+        const newCustomer = await prisma.customer.create({
+            data: {
+                firstName,
+                lastName,
+                email,
+                phoneNumber,
+                address,
+                companyName,
+                companyAddress,
+                companyPhoneNumber,
+            },
         });
 
         return new Response(JSON.stringify(newCustomer), {
@@ -62,4 +65,4 @@ export const POST = async (req: NextRequest) => {
             status: 500,
         });
     }
-}
+};
